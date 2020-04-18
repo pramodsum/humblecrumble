@@ -2,57 +2,33 @@ import React from "react";
 import Link from "next/link";
 import { ListItem } from "@chakra-ui/core";
 import { gql } from "apollo-boost";
+import { Product } from "../../models/shopify.model";
+import { useQuery } from "@apollo/react-hooks";
 
-const CakeLink = (props) => (
+const CakeLink = (props: Product) => (
   <ListItem>
-    <Link href={`/cake/${props.title}`}>
+    <Link href={`/cake/${props.handle}`}>
       <a>{props.title}</a>
     </Link>
   </ListItem>
 );
 
 const Products: React.FC = () => {
+  // const { loading, data } = useQuery<;
   return <></>;
 };
 
-// export const productQuery = gql`
-//   query ProductQuery($handle: String!) {
-//     shopifyProduct(handle: { eq: $handle }) {
-//       id
-//       title
-//       handle
-//       productType
-//       description
-//       descriptionHtml
-//       shopifyId
-//       options {
-//         id
-//         name
-//         values
-//       }
-//       variants {
-//         id
-//         title
-//         price
-//         availableForSale
-//         shopifyId
-//         selectedOptions {
-//           name
-//           value
-//         }
-//       }
-//       priceRange {
-//         minVariantPrice {
-//           amount
-//           currencyCode
-//         }
-//         maxVariantPrice {
-//           amount
-//           currencyCode
-//         }
-//       }
-//     }
-//   }
-// `;
+export const productsQuery = gql`
+  query getProducts($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          id
+          handle
+        }
+      }
+    }
+  }
+`;
 
 export default Products;

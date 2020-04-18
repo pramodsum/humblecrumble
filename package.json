@@ -16,6 +16,9 @@
     "dotenv": "^8.2.0",
     "emotion-theming": "^10.0.27",
     "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "graphql-playground": "^1.3.17",
+    "isomorphic-fetch": "^2.2.1",
     "next": "^9.3.5",
     "next-with-apollo": "^5.0.1",
     "node-fetch": "^2.6.0",
@@ -27,7 +30,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "generate-types": "apollo codegen:generate --addTypename --target typescript --outputFlat src/types"
+    "generate-types": "apollo client:codegen --endpoint https://graphql.myshopify.com/api/graphql --header \"X-Shopify-Storefront-Access-Token: 4ebb75a6a0df933e82687c948a51f208\" --target typescript --passthroughCustomScalars --customScalarsPrefix Shopify"
   },
   "devDependencies": {
     "@types/node": "^13.13.0",
