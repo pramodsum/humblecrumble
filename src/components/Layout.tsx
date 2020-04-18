@@ -1,5 +1,13 @@
 import React from "react";
 
-const Layout: React.FC = ({ children }) => <>{children}</>;
+import Header from "./Header";
+import { Flex, theme } from "@chakra-ui/core";
+
+const Layout: React.FC = ({ children }) => (
+  <>
+    <Header />
+    <Flex maxWidth={theme.breakpoints["md"]}>{children}</Flex>
+  </>
+);
 
 export default Layout;

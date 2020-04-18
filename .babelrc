@@ -2,11 +2,12 @@
   "presets": ["next/babel"],
   "plugins": [
     [
-      "styled-components",
+      "emotion",
       {
-        "ssr": true,
-        "displayName": true,
-        "preprocess": false
+        // sourceMap is on by default but source maps are dead code eliminated in production
+        "sourceMap": true,
+        "labelFormat": "[local]",
+        "cssPropOptimization": true
       }
     ]
   ]

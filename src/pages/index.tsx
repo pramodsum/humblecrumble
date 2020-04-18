@@ -1,9 +1,9 @@
 import React from "react";
+import Products from "../components/Products";
 
-const Index: React.FC = () => (
+const Index = () => (
   <>
-    <h1>Humble Crumble</h1>
-    <img src="/title.png" />
+    <Products />
   </>
 );
 
