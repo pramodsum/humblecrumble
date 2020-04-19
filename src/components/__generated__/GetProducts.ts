@@ -6,14 +6,14 @@
 import { CurrencyCode } from "./../../__generated__/globalTypes";
 
 // ====================================================
-// GraphQL fragment: products
+// GraphQL query operation: GetProducts
 // ====================================================
 
-export interface products_edges_node_images_edges_node {
+export interface GetProducts_products_edges_node_images_edges_node {
   __typename: "Image";
   /**
    * The location of the transformed image as a URL.
-   *
+   * 
    * All transformation arguments are considered "best-effort". If they can be applied to an image, they will be.
    * Otherwise any transformations which an image type does not support will be ignored.
    */
@@ -24,23 +24,23 @@ export interface products_edges_node_images_edges_node {
   altText: string | null;
 }
 
-export interface products_edges_node_images_edges {
+export interface GetProducts_products_edges_node_images_edges {
   __typename: "ImageEdge";
   /**
    * The item at the end of ImageEdge.
    */
-  node: products_edges_node_images_edges_node;
+  node: GetProducts_products_edges_node_images_edges_node;
 }
 
-export interface products_edges_node_images {
+export interface GetProducts_products_edges_node_images {
   __typename: "ImageConnection";
   /**
    * A list of edges.
    */
-  edges: products_edges_node_images_edges[];
+  edges: GetProducts_products_edges_node_images_edges[];
 }
 
-export interface products_edges_node_priceRange_minVariantPrice {
+export interface GetProducts_products_edges_node_priceRange_minVariantPrice {
   __typename: "MoneyV2";
   /**
    * Decimal money amount.
@@ -52,7 +52,7 @@ export interface products_edges_node_priceRange_minVariantPrice {
   currencyCode: CurrencyCode;
 }
 
-export interface products_edges_node_priceRange_maxVariantPrice {
+export interface GetProducts_products_edges_node_priceRange_maxVariantPrice {
   __typename: "MoneyV2";
   /**
    * Decimal money amount.
@@ -64,20 +64,24 @@ export interface products_edges_node_priceRange_maxVariantPrice {
   currencyCode: CurrencyCode;
 }
 
-export interface products_edges_node_priceRange {
+export interface GetProducts_products_edges_node_priceRange {
   __typename: "ProductPriceRange";
   /**
    * The lowest variant's price.
    */
-  minVariantPrice: products_edges_node_priceRange_minVariantPrice;
+  minVariantPrice: GetProducts_products_edges_node_priceRange_minVariantPrice;
   /**
    * The highest variant's price.
    */
-  maxVariantPrice: products_edges_node_priceRange_maxVariantPrice;
+  maxVariantPrice: GetProducts_products_edges_node_priceRange_maxVariantPrice;
 }
 
-export interface products_edges_node {
+export interface GetProducts_products_edges_node {
   __typename: "Product";
+  /**
+   * Globally unique identifier.
+   */
+  id: string;
   /**
    * The product’s title.
    */
@@ -98,41 +102,37 @@ export interface products_edges_node {
   /**
    * List of images associated with the product.
    */
-  images: products_edges_node_images;
+  images: GetProducts_products_edges_node_images;
   /**
    * The price range.
    */
-  priceRange: products_edges_node_priceRange;
+  priceRange: GetProducts_products_edges_node_priceRange;
 }
 
-export interface products_edges {
+export interface GetProducts_products_edges {
   __typename: "ProductEdge";
   /**
    * The item at the end of ProductEdge.
    */
-  node: products_edges_node;
-  /**
-   * A cursor for use in pagination.
-   */
-  cursor: string;
+  node: GetProducts_products_edges_node;
 }
 
-export interface products_pageInfo {
-  __typename: "PageInfo";
-  /**
-   * Indicates if there are more pages to fetch.
-   */
-  hasNextPage: boolean;
-}
-
-export interface products {
+export interface GetProducts_products {
   __typename: "ProductConnection";
   /**
    * A list of edges.
    */
-  edges: products_edges[];
+  edges: GetProducts_products_edges[];
+}
+
+export interface GetProducts {
   /**
-   * Information to aid in pagination.
+   * List of the shop’s products.
    */
-  pageInfo: products_pageInfo;
+  products: GetProducts_products;
+}
+
+export interface GetProductsVariables {
+  cursor?: string | null;
+  query?: string | null;
 }

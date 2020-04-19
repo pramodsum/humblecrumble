@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { ListItem, CircularProgress, Flex } from "@chakra-ui/core";
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+
+import { GetProducts, GetProductsVariables } from "./__generated__/GetProducts";
 
 interface ICakeLinkProps {
   handle: string;
@@ -16,7 +18,9 @@ const CakeLink: React.FC<ICakeLinkProps> = ({ handle, title }) => (
 );
 
 const Products: React.FC = () => {
-  const { loading, data, error } = useQuery(GET_PRODUCTS_QUERY);
+  const { loading, data, error } = useQuery<GetProducts, GetProductsVariables>(
+    GET_PRODUCTS
+  );
 
   return (
     <Flex mx="auto">
@@ -32,57 +36,36 @@ const Products: React.FC = () => {
   );
 };
 
-const PRODUCTS_FRAGMENT = gql`
-  fragment products on ProductConnection {
-    edges {
-      node {
-        title
-        handle
-        description
-        createdAt
-        images(first: 1) {
-          edges {
-            node {
-              transformedSrc
-              altText
+export const GET_PRODUCTS = gql`
+  query GetProducts($cursor: String, $query: String) {
+    products(first: 30, after: $cursor, query: $query) {
+      edges {
+        node {
+          id
+          title
+          handle
+          description
+          createdAt
+          images(first: 1) {
+            edges {
+              node {
+                transformedSrc
+                altText
+              }
+            }
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+            maxVariantPrice {
+              amount
+              currencyCode
             }
           }
         }
-        priceRange {
-          minVariantPrice {
-            amount
-            currencyCode
-          }
-          maxVariantPrice {
-            amount
-            currencyCode
-          }
-        }
       }
-      cursor
-    }
-    pageInfo {
-      hasNextPage
-    }
-  }
-`;
-
-export const GET_PRODUCTS_QUERY = gql`
-  ${PRODUCTS_FRAGMENT}
-  query products(
-    $cursor: String
-    $query: String
-    $sortKey: ProductSortKeys
-    $reverse: Boolean
-  ) {
-    products(
-      first: 30
-      after: $cursor
-      query: $query
-      sortKey: $sortKey
-      reverse: $reverse
-    ) {
-      ...products
     }
   }
 `;
