@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { CurrencyCode } from "./globalTypes";
+import { CurrencyCode } from "./../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL fragment: products
@@ -17,7 +17,7 @@ export interface products_edges_node_images_edges_node {
    * All transformation arguments are considered "best-effort". If they can be applied to an image, they will be.
    * Otherwise any transformations which an image type does not support will be ignored.
    */
-  transformedSrc: any;
+  transformedSrc: ShopifyURL;
   /**
    * A word or phrase to share the nature or contents of an image.
    */
@@ -45,7 +45,7 @@ export interface products_edges_node_priceRange_minVariantPrice {
   /**
    * Decimal money amount.
    */
-  amount: any;
+  amount: ShopifyDecimal;
   /**
    * Currency of the money.
    */
@@ -57,7 +57,7 @@ export interface products_edges_node_priceRange_maxVariantPrice {
   /**
    * Decimal money amount.
    */
-  amount: any;
+  amount: ShopifyDecimal;
   /**
    * Currency of the money.
    */
@@ -94,7 +94,7 @@ export interface products_edges_node {
   /**
    * The date and time when the product was created.
    */
-  createdAt: any;
+  createdAt: ShopifyDateTime;
   /**
    * List of images associated with the product.
    */
