@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import Link from "next/link";
-import { Box, Heading, Flex, Text, Skeleton } from "@chakra-ui/core";
+import { Box, Heading, Flex, Text, Skeleton, Image } from "@chakra-ui/core";
 
 import { GetProducts_products_edges_node } from "./__generated__/GetProducts";
 import theme from "../utils/theme";
@@ -10,8 +10,10 @@ const MiniProductCard: React.FC<GetProducts_products_edges_node> = ({
   handle,
   title,
   priceRange,
+  images: { edges: imageNodes },
 }) => (
   <Box
+    textAlign="center"
     css={css`
       &:hover {
         color: ${theme.colors.hotPink};
@@ -20,7 +22,16 @@ const MiniProductCard: React.FC<GetProducts_products_edges_node> = ({
   >
     <Link href={`/cake/${handle}`}>
       <Flex flexDirection="column" justifyContent="center" alignItems="center">
-        <Skeleton height="200px" width="200px" mb={4} />
+        {imageNodes.length > 0 ? (
+          <Image
+            height="auto"
+            width="100%"
+            mb={4}
+            src={imageNodes[0].node.transformedSrc}
+          />
+        ) : (
+          <Skeleton height="200px" width="200px" mb={4} />
+        )}
         <Heading as="h3" size="sm">
           {title}
         </Heading>

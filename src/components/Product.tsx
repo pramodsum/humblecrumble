@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Skeleton, Flex, Box, Button } from "@chakra-ui/core";
+import { Skeleton, Flex, Box, Button, Text } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { withRouter } from "next/router";
@@ -87,7 +87,7 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
       {data?.productByHandle && (
         <Box>
           <Title>{data.productByHandle.title}</Title>
-          <Flex>
+          <Flex display={["column", "row"]}>
             <CakeImgBackground>
               {cakeVariant && (
                 <CakeImg
@@ -123,6 +123,11 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
               )}
             </Box>
           </Flex>
+          <Text
+            dangerouslySetInnerHTML={{
+              __html: data.productByHandle.descriptionHtml,
+            }}
+          />
         </Box>
       )}
       {error && <pre>{JSON.stringify(error)}</pre>}
@@ -134,15 +139,7 @@ export const GET_PRODUCT_DETAILS = gql`
   query GetProductDetails($handle: String!) {
     productByHandle(handle: $handle) {
       title
-      description
-      images(first: 1) {
-        edges {
-          node {
-            altText
-            transformedSrc
-          }
-        }
-      }
+      descriptionHtml
       options {
         id
         name

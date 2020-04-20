@@ -7,6 +7,37 @@
 // GraphQL query operation: GetProducts
 // ====================================================
 
+export interface GetProducts_products_edges_node_images_edges_node {
+  __typename: "Image";
+  /**
+   * A word or phrase to share the nature or contents of an image.
+   */
+  altText: string | null;
+  /**
+   * The location of the transformed image as a URL.
+   * 
+   * All transformation arguments are considered "best-effort". If they can be applied to an image, they will be.
+   * Otherwise any transformations which an image type does not support will be ignored.
+   */
+  transformedSrc: ShopifyURL;
+}
+
+export interface GetProducts_products_edges_node_images_edges {
+  __typename: "ImageEdge";
+  /**
+   * The item at the end of ImageEdge.
+   */
+  node: GetProducts_products_edges_node_images_edges_node;
+}
+
+export interface GetProducts_products_edges_node_images {
+  __typename: "ImageConnection";
+  /**
+   * A list of edges.
+   */
+  edges: GetProducts_products_edges_node_images_edges[];
+}
+
 export interface GetProducts_products_edges_node_priceRange_minVariantPrice {
   __typename: "MoneyV2";
   /**
@@ -50,6 +81,10 @@ export interface GetProducts_products_edges_node {
    * They are used by the Liquid templating language to refer to objects.
    */
   handle: string;
+  /**
+   * List of images associated with the product.
+   */
+  images: GetProducts_products_edges_node_images;
   /**
    * The price range.
    */

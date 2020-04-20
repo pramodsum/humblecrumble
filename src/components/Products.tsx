@@ -24,7 +24,7 @@ const Products: React.FC = () => {
           />
         </Flex>
       )}
-      <SimpleGrid width="100%" columns={3} spacing={3}>
+      <SimpleGrid width="100%" columns={[2, 3]} spacing={3}>
         {data &&
           data.products.edges.map(({ node }) => (
             <MiniProductCard key={node.id} {...node} />
@@ -43,6 +43,14 @@ export const GET_PRODUCTS = gql`
           id
           title
           handle
+          images(first: 1) {
+            edges {
+              node {
+                altText
+                transformedSrc
+              }
+            }
+          }
           priceRange {
             minVariantPrice {
               amount

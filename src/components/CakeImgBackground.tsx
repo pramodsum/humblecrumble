@@ -17,8 +17,10 @@ import theme from "../utils/theme";
 const CakeImgBackground: React.FC = ({ children }) => (
   <Box
     minWidth="300px"
-    width="350px"
-    mr={6}
+    minHeight="100px"
+    width={["100%", "350px"]}
+    mr={[0, 6]}
+    mb={[6, 0]}
     display="flex"
     justifyContent="center"
     alignItems="center"
