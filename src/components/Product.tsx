@@ -1,25 +1,52 @@
 import React, { useContext } from "react";
-import { CircularProgress, Flex, Box, Button, theme } from "@chakra-ui/core";
+import { Skeleton, Flex, Box, Button } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
+import styled from "@emotion/styled";
+
 import {
   GetProductDetails,
   GetProductDetailsVariables,
   GetProductDetails_productByHandle_variants_edges,
 } from "./__generated__/GetProductDetails";
-import styled from "@emotion/styled";
+
 import CakeImg, { CakeVariant } from "./CakeImg";
 import CakeImgBackground from "./CakeImgBackground";
 import OrderForm from "./OrderForm";
 import { CheckoutContext } from "../CheckoutContext";
+import theme from "../utils/theme";
 
 const Title = styled.h1`
   text-transform: capitalize;
   overflow-wrap: break-word;
   font-size: 2rem;
 `;
+
+const ProductSkeleton: React.FC = () => (
+  <>
+    <Skeleton height="20px" width="720px" my={4} />
+    <Flex width="100%">
+      <Skeleton height="200px" width="300px" my={4} mr={3} />
+      <Flex flexDirection="column" alignItems="flex-end">
+        <Box>
+          <Skeleton height="20px" width="410px" my={4} />
+          <Skeleton height="20px" width="410px" my={4} />
+        </Box>
+        <Box>
+          <Skeleton height="20px" width="410px" my={4} />
+          <Skeleton height="20px" width="410px" my={4} />
+        </Box>
+        <Box>
+          <Skeleton height="20px" width="410px" my={4} />
+          <Skeleton height="20px" width="410px" my={4} />
+        </Box>
+        <Skeleton height="40px" width="410px" my={4} />
+      </Flex>
+    </Flex>
+  </>
+);
 
 const Product: React.FC<WithRouterProps> = ({ router }) => {
   const handle = router.query.handle as string;
@@ -56,7 +83,7 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
 
   return (
     <Box>
-      {loading && <CircularProgress isIndeterminate />}
+      {loading && <ProductSkeleton />}
       {data?.productByHandle && (
         <Box>
           <Title>{data.productByHandle.title}</Title>

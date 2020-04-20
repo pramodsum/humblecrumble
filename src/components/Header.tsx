@@ -1,18 +1,12 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import {
-  Flex,
-  Image,
-  IconButton,
-  Box,
-  Button,
-  theme,
-  Badge,
-} from "@chakra-ui/core";
+import { useContext } from "react";
+import { Flex, Image, IconButton, Box, Button, Badge } from "@chakra-ui/core";
 import { AiOutlineShoppingCart, AiOutlineInstagram } from "react-icons/ai";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
-import { useContext } from "react";
+
+import theme from "../utils/theme";
 import { CheckoutContext } from "../CheckoutContext";
 
 const iconCss = css`
@@ -25,7 +19,7 @@ const CheckoutIcon: React.FC<{ quantity?: number }> = ({ quantity }) => (
   <>
     <AiOutlineShoppingCart css={iconCss} />
     <Badge
-      backgroundColor="#fb175f"
+      backgroundColor={theme.colors.hotPink}
       color={theme.colors.white}
       borderRadius={theme.radii.full}
       position="absolute"

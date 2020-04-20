@@ -3,10 +3,12 @@ import App from "next/app";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient, NormalizedCacheObject } from "apollo-boost";
-import { ThemeProvider, theme, CSSReset } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 import Layout from "../components/Layout";
 import withApollo from "../hooks/withApollo";
+import theme from "../utils/theme";
+
 // since "apollo" isn't a native Next.js prop we have to declare it's type.
 interface IProps {
   apollo: ApolloClient<NormalizedCacheObject>;

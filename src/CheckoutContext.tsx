@@ -2,8 +2,9 @@ import React from "react";
 import gql from "graphql-tag";
 import { ApolloError } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
-import { Flex, theme } from "@chakra-ui/core";
+import { Flex, CircularProgress } from "@chakra-ui/core";
 
+import theme from "./utils/theme";
 import Header from "./components/Header";
 
 import {
@@ -133,12 +134,14 @@ export const CheckoutProvider: React.FC = ({ children }) => {
       value={{ loading, checkout, error, addItemToCart }}
     >
       {loading ? (
-        <>
-          <Header />
-          <Flex maxWidth={theme.breakpoints["md"]} mx="auto" px={1}>
-            {children}
-          </Flex>
-        </>
+        <Flex
+          width="100%"
+          height="100vh"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <CircularProgress isIndeterminate thickness={5} />
+        </Flex>
       ) : (
         children
       )}
