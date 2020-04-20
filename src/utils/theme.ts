@@ -46,7 +46,7 @@ interface ITheme extends ChakraTheme {
 
 const theme: ITheme = {
   ...chakraTheme,
-  breakpoints: ["320px", "375px", "767px", "1023px"],
+  breakpoints: ["375px", "767px", "1023px"],
   colors: {
     ...chakraTheme.colors,
     hotPink: "#fb175f",

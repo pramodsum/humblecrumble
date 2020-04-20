@@ -15,9 +15,9 @@ import theme from "../utils/theme";
 import { CheckoutContext } from "../CheckoutContext";
 
 const iconCss = css`
-  margin: auto;
-  height: 1.5rem;
-  width: 1.5rem;
+  margin: 0;
+  height: 1.75rem;
+  width: 1.75rem;
 
   &:hover {
     fill: ${theme.colors.hotPink};
@@ -46,7 +46,7 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
   return (
     <Flex
       width="100%"
-      px={6}
+      px={[4, null, 6]}
       mx="auto"
       position="static"
       maxWidth={theme.breakpoints["lg"]}
@@ -72,20 +72,23 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
       </Button>
       <Box>
         <IconButton
+          size="sm"
           variant="unstyled"
-          aria-label="instagram"
+          aria-label="home"
           icon={() => <AiOutlineHome css={iconCss} />}
           onClick={() => router.push("/")}
         />
         <IconButton
+          size="sm"
           variant="unstyled"
-          aria-label="instagram"
+          aria-label="blog"
           icon={() => <AiOutlineGift css={iconCss} />}
           onClick={() =>
             window.location.assign("https://cookinginpjs.com/tag/desserts")
           }
         />
         <IconButton
+          size="sm"
           variant="unstyled"
           aria-label="instagram"
           icon={() => <AiOutlineInstagram css={iconCss} />}
@@ -94,6 +97,7 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
           }
         />
         <IconButton
+          size="sm"
           variant="unstyled"
           aria-label="cart"
           onClick={() => router.push("/cart")}

@@ -35,9 +35,9 @@ const InlineCopyrightIcon = styled(AiOutlineCopyright)`
 
 const Footer: React.FC = () => (
   <Box mt={12} background={theme.colors.lemon[50]} width="100%" py={4}>
-    <Box maxWidth={theme.breakpoints["lg"]} mx="auto" px={6}>
-      <Flex flexDirection={["column-reverse", "row"]}>
-        <Box width="100%" maxWidth={["100%", "33%"]} mr={6}>
+    <Box maxWidth={theme.breakpoints["lg"]} mx="auto" px={[4, null, 6]}>
+      <Flex flexDirection={["column-reverse", null, "row"]}>
+        <Box width="100%" maxWidth={["100%", null, "33%"]} mr={6}>
           <Flex my={4}>
             <IconButton
               variant="unstyled"

@@ -1,5 +1,5 @@
 import React from "react";
-import { SimpleGrid } from "@chakra-ui/core";
+import { SimpleGrid, Flex } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
@@ -12,8 +12,8 @@ const Products: React.FC = () => {
   );
 
   return (
-    <>
-      <SimpleGrid width="100%" columns={[2, 3, 4]} spacing={3}>
+    <Flex>
+      <SimpleGrid width="100%" columns={[2, null, 4]} spacing={3}>
         {loading && new Array(6).fill(<Skeleton />)}
         {data &&
           data.products.edges.map(({ node }) => (
@@ -21,7 +21,7 @@ const Products: React.FC = () => {
           ))}
       </SimpleGrid>
       {error && <pre>{JSON.stringify(error)}</pre>}
-    </>
+    </Flex>
   );
 };
 

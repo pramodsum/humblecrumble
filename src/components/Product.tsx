@@ -37,8 +37,8 @@ const SkeletonText = () => (
 const Skeleton: React.FC = () => (
   <SimpleGrid columns={1} spacing={4}>
     <ChakraSkeleton height="50px" />
-    <SimpleGrid columns={[1, 2]} spacing={5}>
-      <ChakraSkeleton height="200px" mr={[0, 3]} />
+    <SimpleGrid columns={[1, null, 2]} spacing={5}>
+      <ChakraSkeleton height="200px" mr={[0, null, 3]} />
       <SimpleGrid columns={1} spacing={5}>
         <ChakraSkeleton height="30px" />
         <SkeletonText />
@@ -97,7 +97,7 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
           >
             {data.productByHandle.title}
           </Heading>
-          <Flex flexDirection={["column", "row"]} mb={8}>
+          <Flex flexDirection={["column", null, "row"]} mb={8}>
             <CakeImgBackground>
               {cakeVariant && (
                 <CakeImg

@@ -18,9 +18,9 @@ const CakeImgBackground: React.FC = ({ children }) => (
   <Box
     minWidth="300px"
     minHeight="100px"
-    width={["100%", "350px"]}
-    mr={[0, 6]}
-    mb={[6, 0]}
+    width={["100%", null, "350px"]}
+    mr={[0, null, 6]}
+    mb={[6, null, 0]}
     display="flex"
     justifyContent="center"
     alignItems="center"

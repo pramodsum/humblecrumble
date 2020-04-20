@@ -14,7 +14,7 @@ const Layout: React.FC = ({ children }) => (
         width="100%"
         maxWidth={theme.breakpoints["lg"]}
         mx="auto"
-        px={6}
+        px={[4, null, 6]}
         flex={1}
       >
         {children}
