@@ -13,6 +13,7 @@ import {
   AiOutlineCopyright,
   AiOutlineInstagram,
   AiOutlineMail,
+  AiOutlineGift,
 } from "react-icons/ai";
 import styled from "@emotion/styled";
 
@@ -42,11 +43,25 @@ const Footer: React.FC = () => (
               variant="unstyled"
               aria-label="instagram"
               icon={() => <AiOutlineInstagram css={iconCss} />}
+              onClick={() =>
+                window.location.assign("https://instagram.com/humblecrumblesf")
+              }
+            />
+            <IconButton
+              variant="unstyled"
+              aria-label="instagram"
+              icon={() => <AiOutlineGift css={iconCss} />}
+              onClick={() =>
+                window.location.assign("https://cookinginpjs.com/tag/desserts")
+              }
             />
             <IconButton
               variant="unstyled"
               aria-label="email"
               icon={() => <AiOutlineMail css={iconCss} />}
+              onClick={() =>
+                window.location.assign("mailto:sumu@cookinginpjs.com")
+              }
             />
           </Flex>
           {/* <Text mt={3}>

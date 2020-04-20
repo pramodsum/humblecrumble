@@ -1,21 +1,30 @@
 import React from "react";
 import { Button, ButtonProps, Flex, Box, Heading, Text } from "@chakra-ui/core";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import {
+  AiOutlinePlus,
+  AiOutlineMinus,
+  AiOutlinePlusSquare,
+  AiOutlineMinusSquare,
+} from "react-icons/ai";
 
 import { CheckoutFragment_lineItems_edges_node } from "../__generated__/CheckoutFragment";
 import theme from "../utils/theme";
 
 const CartAction: React.FC<ButtonProps> = ({ children, ...props }) => (
   <Button
-    size="sm"
-    variant="outline"
+    size="md"
+    variant="unstyled"
     color={theme.colors.hotPink}
     borderColor={theme.colors.hotPink}
+    fontSize="4xl"
+    display="inline-flex"
+    justifyContent="center"
+    alignItems="center"
     _hover={{
       color: theme.colors.white,
       backgroundColor: theme.colors.hotPink,
     }}
-    borderRadius={0}
+    borderRadius={theme.radii.md}
     {...props}
   >
     {children}
@@ -28,40 +37,45 @@ const CartItem: React.FC<CheckoutFragment_lineItems_edges_node> = ({
 }) => {
   const variants = variant.title.split("/");
   return (
-    <Flex width="100%" justifyContent="space-between" py={2}>
+    <Flex
+      width="100%"
+      justifyContent="space-between"
+      py={2}
+      textTransform="lowercase"
+    >
       <Box>
-        <Heading as="h3" size="xl" textTransform="lowercase" fontFamily="title">
+        <Heading as="h3" size="xl" fontFamily="title">
           {title}
         </Heading>
         <Flex>
-          <Heading as="h4" size="sm" mr={1} textTransform="lowercase">
+          <Heading as="h4" size="sm" mr={1}>
             Size:
           </Heading>
           <Text>{variants[0]}</Text>
         </Flex>
         <Flex>
-          <Heading as="h4" size="sm" mr={1} textTransform="lowercase">
+          <Heading as="h4" size="sm" mr={1}>
             Layers:
           </Heading>
           <Text>{variants[1]}</Text>
         </Flex>
         <Flex>
-          <Heading as="h4" size="sm" mr={1} textTransform="lowercase">
+          <Heading as="h4" size="sm" mr={1}>
             Frosting:
           </Heading>
           <Text>{variants[2]}</Text>
         </Flex>
       </Box>
       <Flex flexDirection="column" alignItems="flex-end">
-        <Heading as="h3" size="xl" mb={2} textTransform="lowercase">
+        <Heading as="h3" size="lg" mb={2}>
           ${parseInt(variant.priceV2.amount).toFixed(2)}
         </Heading>
         <Box>
-          <CartAction mr={2}>
-            <AiOutlinePlus />
+          <CartAction>
+            <AiOutlinePlusSquare />
           </CartAction>
           <CartAction>
-            <AiOutlineMinus />
+            <AiOutlineMinusSquare />
           </CartAction>
         </Box>
       </Flex>

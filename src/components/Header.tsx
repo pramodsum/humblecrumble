@@ -1,16 +1,13 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import { useContext } from "react";
+import { Flex, IconButton, Box, Button, Badge, Heading } from "@chakra-ui/core";
 import {
-  Flex,
-  Image,
-  IconButton,
-  Box,
-  Button,
-  Badge,
-  Heading,
-} from "@chakra-ui/core";
-import { AiOutlineShoppingCart, AiOutlineInstagram } from "react-icons/ai";
+  AiOutlineShoppingCart,
+  AiOutlineInstagram,
+  AiOutlineHome,
+  AiOutlineGift,
+} from "react-icons/ai";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
 
@@ -49,7 +46,7 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
   return (
     <Flex
       width="100%"
-      px={4}
+      px={6}
       mx="auto"
       position="static"
       maxWidth={theme.breakpoints["lg"]}
@@ -74,6 +71,20 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
         {/* <Image width="150px" height="auto" src="/title.png" /> */}
       </Button>
       <Box>
+        <IconButton
+          variant="unstyled"
+          aria-label="instagram"
+          icon={() => <AiOutlineHome css={iconCss} />}
+          onClick={() => router.push("/")}
+        />
+        <IconButton
+          variant="unstyled"
+          aria-label="instagram"
+          icon={() => <AiOutlineGift css={iconCss} />}
+          onClick={() =>
+            window.location.assign("https://cookinginpjs.com/tag/desserts")
+          }
+        />
         <IconButton
           variant="unstyled"
           aria-label="instagram"

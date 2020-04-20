@@ -13,7 +13,7 @@ const Products: React.FC = () => {
 
   return (
     <>
-      <SimpleGrid width="100%" columns={[2, 3]} spacing={3}>
+      <SimpleGrid width="100%" columns={[2, 3, 4]} spacing={3}>
         {loading && new Array(6).fill(<Skeleton />)}
         {data &&
           data.products.edges.map(({ node }) => (
