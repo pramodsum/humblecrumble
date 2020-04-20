@@ -62,10 +62,6 @@ export interface GetProductDetails_productByHandle_variants_edges_node_priceV2 {
    * Decimal money amount.
    */
   amount: ShopifyDecimal;
-  /**
-   * Currency of the money.
-   */
-  currencyCode: CurrencyCode;
 }
 
 export interface GetProductDetails_productByHandle_variants_edges_node_selectedOptions {

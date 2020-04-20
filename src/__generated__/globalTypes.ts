@@ -155,6 +155,52 @@ export enum CurrencyCode {
   ZMW = "ZMW",
 }
 
+/**
+ * Specifies the input fields required for an attribute.
+ */
+export interface AttributeInput {
+  key: string;
+  value: string;
+}
+
+/**
+ * Specifies the fields required to create a checkout.
+ */
+export interface CheckoutCreateInput {
+  email?: string | null;
+  lineItems?: CheckoutLineItemInput[] | null;
+  shippingAddress?: MailingAddressInput | null;
+  note?: string | null;
+  customAttributes?: AttributeInput[] | null;
+  allowPartialAddresses?: boolean | null;
+  presentmentCurrencyCode?: CurrencyCode | null;
+}
+
+/**
+ * Specifies the input fields to create a line item on a checkout.
+ */
+export interface CheckoutLineItemInput {
+  customAttributes?: AttributeInput[] | null;
+  quantity: number;
+  variantId: string;
+}
+
+/**
+ * Specifies the fields accepted to create or update a mailing address.
+ */
+export interface MailingAddressInput {
+  address1?: string | null;
+  address2?: string | null;
+  city?: string | null;
+  company?: string | null;
+  country?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  phone?: string | null;
+  province?: string | null;
+  zip?: string | null;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

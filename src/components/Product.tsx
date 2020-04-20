@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CircularProgress, Flex, Box, Button, theme } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
@@ -13,6 +13,7 @@ import styled from "@emotion/styled";
 import CakeImg, { CakeVariant } from "./CakeImg";
 import CakeImgBackground from "./CakeImgBackground";
 import OrderForm from "./OrderForm";
+import { CheckoutContext } from "../CheckoutContext";
 
 const Title = styled.h1`
   text-transform: capitalize;
@@ -20,16 +21,18 @@ const Title = styled.h1`
   font-size: 2rem;
 `;
 
-const Product: React.FC<WithRouterProps> = ({ router: { query } }) => {
-  const handle = query.handle as string;
-  const { loading, data, error } = useQuery<
-    GetProductDetails,
-    GetProductDetailsVariables
-  >(GET_PRODUCT_DETAILS, { variables: { handle } });
+const Product: React.FC<WithRouterProps> = ({ router }) => {
+  const handle = router.query.handle as string;
   const [selectedVariant, setSelectedVariant] = React.useState<
     GetProductDetails_productByHandle_variants_edges
   >();
   const [cakeVariant, setCakeVariant] = React.useState<CakeVariant>();
+  const { addItemToCart } = useContext(CheckoutContext);
+
+  const { loading, data, error } = useQuery<
+    GetProductDetails,
+    GetProductDetailsVariables
+  >(GET_PRODUCT_DETAILS, { variables: { handle } });
 
   const findMatchingVariant = (
     size: string,
@@ -52,7 +55,7 @@ const Product: React.FC<WithRouterProps> = ({ router: { query } }) => {
   };
 
   return (
-    <>
+    <Box>
       {loading && <CircularProgress isIndeterminate />}
       {data?.productByHandle && (
         <Box>
@@ -84,18 +87,19 @@ const Product: React.FC<WithRouterProps> = ({ router: { query } }) => {
                     backgroundColor: theme.colors.black,
                     color: theme.colors.white,
                   }}
+                  onClick={() => {
+                    addItemToCart(selectedVariant.node.id);
+                  }}
                 >
                   Add to cart
                 </Button>
               )}
             </Box>
           </Flex>
-          {/* <p dangerouslySetInnerHTML={{ __html: descriptionHtml }} /> */}
-          {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
         </Box>
       )}
       {error && <pre>{JSON.stringify(error)}</pre>}
-    </>
+    </Box>
   );
 };
 

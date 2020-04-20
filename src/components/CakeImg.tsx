@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@chakra-ui/core";
 import { keyframes } from "@emotion/core";
 import styled from "@emotion/styled";
-// import Img from "./Image";
 
 export type CakeVariant = {
   size: string;

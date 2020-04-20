@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { Flex, Image, IconButton, Box } from "@chakra-ui/core";
+import { Flex, Image, IconButton, Box, Button, theme } from "@chakra-ui/core";
 import { AiOutlineShoppingCart, AiOutlineInstagram } from "react-icons/ai";
+import { withRouter } from "next/router";
+import { WithRouterProps } from "next/dist/client/with-router";
 
 const iconCss = css`
   margin: auto;
@@ -9,15 +11,25 @@ const iconCss = css`
   width: 1.5rem;
 `;
 
-const Header: React.FC = () => {
+const Header: React.FC<WithRouterProps> = ({ router }) => {
   return (
     <Flex
       px={4}
+      mx="auto"
       position="static"
+      maxWidth={theme.breakpoints["md"]}
       justifyContent="space-between"
       alignItems="center"
+      height="90px"
     >
-      <Image height="90px" width="auto" src="/title.png" />
+      <Button
+        aria-label="logo"
+        onClick={() => router.push("/")}
+        variant="unstyled"
+        height="auto"
+      >
+        <Image width="150px" height="auto" src="/title.png" />
+      </Button>
       <Box>
         <IconButton
           variant="unstyled"
@@ -30,6 +42,7 @@ const Header: React.FC = () => {
         <IconButton
           variant="unstyled"
           aria-label="cart"
+          onClick={() => router.push("/cart")}
           icon={() => <AiOutlineShoppingCart css={iconCss} />}
         />
       </Box>
@@ -37,4 +50,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
