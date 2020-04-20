@@ -63,11 +63,11 @@ const Footer: React.FC = () => (
             <Heading as="h5" size="sm" textTransform="lowercase">
               Hours:
             </Heading>
-            <Flex>
+            <Flex textTransform="lowercase">
               <Text mr={2}>Mon - Fri: </Text>
               <Text>10AM - 8PM</Text>
             </Flex>
-            <Flex>
+            <Flex textTransform="lowercase">
               <Text mr={2}>Sat - Sun: </Text>
               <Text>12PM - 6PM</Text>
             </Flex>

@@ -33,7 +33,7 @@ const MiniProductCard: React.FC<GetProducts_products_edges_node> = ({
         ) : (
           <Skeleton height="200px" width="200px" mb={4} />
         )}
-        <Heading as="h3" size="xl" textTransform="lowercase">
+        <Heading as="h3" size="md" textTransform="lowercase">
           {title}
         </Heading>
         <Text fontWeight="300" m={0}>

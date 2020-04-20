@@ -31,8 +31,16 @@ interface Colors {
   telegram: ColorHues;
 }
 
+interface Fonts {
+  body: string;
+  heading: string;
+  title: string;
+  mono: string;
+}
+
 interface ITheme extends ChakraTheme {
   colors: Colors;
+  fonts: Fonts;
 }
 
 const theme: ITheme = {
@@ -55,7 +63,8 @@ const theme: ITheme = {
   },
   fonts: {
     body: "'Quicksand', sans-serif",
-    heading: "'Nanum Pen Script', cursive",
+    heading: "'Quicksand', sans-serif",
+    title: "'Nanum Pen Script', cursive",
     mono: "'Cutive Mono', monospace",
   },
 };

@@ -25,7 +25,6 @@ const OptionTitle: React.FC<HeadingProps> = (props) => (
     size="sm"
     textTransform="lowercase"
     overflowWrap="breakWord"
-    fontFamily="body"
     {...props}
   />
 );
@@ -150,7 +149,7 @@ const OrderForm: React.FC<
             ${parseInt(selectedVariant.node.priceV2.amount).toFixed(2)}
           </OptionTitle>
         ) : (
-          <OptionTitle fontWeight="300" fontFamily="body" m={0}>
+          <OptionTitle fontWeight="300" m={0}>
             ${parseInt(priceRange.minVariantPrice.amount).toFixed(2)} - $
             {parseInt(priceRange.maxVariantPrice.amount).toFixed(2)}
           </OptionTitle>

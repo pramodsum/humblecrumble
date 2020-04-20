@@ -63,7 +63,12 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
         variant="unstyled"
         height="auto"
       >
-        <Heading as="h1" fontSize={theme.fontSizes["4xl"]} letterSpacing={-1}>
+        <Heading
+          as="h1"
+          fontSize={theme.fontSizes["4xl"]}
+          fontFamily="title"
+          letterSpacing={-1}
+        >
           humble crumble
         </Heading>
         {/* <Image width="150px" height="auto" src="/title.png" /> */}
