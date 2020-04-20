@@ -8,11 +8,19 @@ import theme from "../utils/theme";
 
 const Layout: React.FC = ({ children }) => (
   <CheckoutProvider>
-    <Header />
-    <Flex maxWidth={theme.breakpoints["md"]} mx="auto" px={6}>
-      {children}
+    <Flex width="100%" flexDirection="column" minHeight="100vh">
+      <Header />
+      <Flex
+        width="100%"
+        maxWidth={theme.breakpoints["md"]}
+        mx="auto"
+        px={6}
+        flex={1}
+      >
+        {children}
+      </Flex>
+      <Footer />
     </Flex>
-    <Footer />
   </CheckoutProvider>
 );
 

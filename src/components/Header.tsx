@@ -13,6 +13,10 @@ const iconCss = css`
   margin: auto;
   height: 1.5rem;
   width: 1.5rem;
+
+  &:hover {
+    fill: ${theme.colors.hotPink};
+  }
 `;
 
 const CheckoutIcon: React.FC<{ quantity?: number }> = ({ quantity }) => (
@@ -36,6 +40,7 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
   const { checkout } = useContext(CheckoutContext);
   return (
     <Flex
+      width="100%"
       px={4}
       mx="auto"
       position="static"

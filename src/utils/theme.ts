@@ -6,8 +6,9 @@ export default {
     ...theme.colors,
     hotPink: "#fb175f",
     lemon: {
-      50: "#fffcc2",
-      100: "#fff883",
+      50: "#fffeeb",
+      100: "#fffcc2",
+      200: "#fff883",
     },
   },
 };

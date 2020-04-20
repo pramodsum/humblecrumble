@@ -28,7 +28,7 @@ const CartItem: React.FC<CheckoutFragment_lineItems_edges_node> = ({
 }) => {
   const variants = variant.title.split("/");
   return (
-    <Flex width="100%" justifyContent="space-between" my={2} py={2}>
+    <Flex width="100%" justifyContent="space-between" py={2}>
       <Box>
         <Heading as="h3" size="md">
           {title}

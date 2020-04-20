@@ -2,7 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import { ApolloError } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
-import { Flex, CircularProgress } from "@chakra-ui/core";
+import { Flex, Spinner } from "@chakra-ui/core";
 
 import theme from "./utils/theme";
 import Header from "./components/Header";
@@ -140,7 +140,13 @@ export const CheckoutProvider: React.FC = ({ children }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <CircularProgress isIndeterminate thickness={5} />
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.50"
+            color="hotPink"
+            size="xl"
+          />
         </Flex>
       ) : (
         children

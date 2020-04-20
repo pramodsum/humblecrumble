@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Button } from "@chakra-ui/core";
+import { Flex, Button, Stack, Box } from "@chakra-ui/core";
 
 import { CheckoutContext } from "../CheckoutContext";
 import CartItem from "../components/CartItem";
@@ -10,29 +10,35 @@ const Cart: React.FC = () => {
 
   return (
     <Flex width="100%" flexDirection="column" alignItems="flex-end" mb={6}>
-      {checkout?.lineItems.edges.length === 0 && <h4>Cart is empty :(</h4>}
-      <Flex
-        width="100%"
-        flexDirection="column"
-        justifyContent="space-between"
-        borderBottom={`1px dashed ${theme.colors.black}`}
-        mb={4}
-      >
-        {checkout?.lineItems.edges.map(({ node }) => (
-          <CartItem {...node} />
-        ))}
-      </Flex>
-      <Button
-        backgroundColor={theme.colors.hotPink}
-        color={theme.colors.white}
-        size="lg"
-        _hover={{
-          backgroundColor: theme.colors.white,
-          color: theme.colors.hotPink,
-        }}
-      >
-        Checkout
-      </Button>
+      {checkout?.lineItems.edges.length ? (
+        <>
+          <Stack
+            width="100%"
+            spacing={6}
+            mb={6}
+            borderBottom={`1px dashed ${theme.colors.black}`}
+          >
+            {checkout?.lineItems.edges.map(({ node }) => (
+              <CartItem {...node} />
+            ))}
+          </Stack>
+          <Button
+            backgroundColor={theme.colors.hotPink}
+            color={theme.colors.white}
+            size="lg"
+            _hover={{
+              backgroundColor: theme.colors.white,
+              color: theme.colors.hotPink,
+            }}
+          >
+            Checkout
+          </Button>
+        </>
+      ) : (
+        <Box width="100%" textAlign="center">
+          <h4>Cart is empty :(</h4>
+        </Box>
+      )}
     </Flex>
   );
 };

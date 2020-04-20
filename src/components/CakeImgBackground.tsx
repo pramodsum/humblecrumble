@@ -23,7 +23,7 @@ const CakeImgBackground: React.FC = ({ children }) => (
     justifyContent="center"
     alignItems="center"
     borderRadius="5px"
-    backgroundColor={theme.colors.yellow[50]}
+    backgroundColor={theme.colors.lemon[50]}
   >
     {/* <Sprinkle transform="rotate(60deg)" top="30%" left="90%" />
     <Sprinkle transform="rotate(-60deg)" top="70%" left="67%" />
