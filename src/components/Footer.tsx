@@ -49,11 +49,11 @@ const Footer: React.FC = () => (
               icon={() => <AiOutlineMail css={iconCss} />}
             />
           </Flex>
-          <Text mt={3}>
+          {/* <Text mt={3}>
             Copyright
             <InlineCopyrightIcon />
             Humble Crumble SF, {new Date().getFullYear()}
-          </Text>
+          </Text> */}
         </Box>
         <Box>
           <Box my={3}>
