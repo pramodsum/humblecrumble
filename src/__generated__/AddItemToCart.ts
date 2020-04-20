@@ -14,7 +14,7 @@ export interface AddItemToCart_checkoutLineItemsReplace_checkout_totalTaxV2 {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface AddItemToCart_checkoutLineItemsReplace_checkout_subtotalPriceV2 {
@@ -22,7 +22,7 @@ export interface AddItemToCart_checkoutLineItemsReplace_checkout_subtotalPriceV2
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface AddItemToCart_checkoutLineItemsReplace_checkout_totalPriceV2 {
@@ -30,7 +30,7 @@ export interface AddItemToCart_checkoutLineItemsReplace_checkout_totalPriceV2 {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface AddItemToCart_checkoutLineItemsReplace_checkout_lineItems_edges_node_variant_image {
@@ -40,7 +40,7 @@ export interface AddItemToCart_checkoutLineItemsReplace_checkout_lineItems_edges
    * 
    * If there are any existing transformations in the original source URL, they will remain and not be stripped.
    */
-  originalSrc: ShopifyURL;
+  originalSrc: any;
 }
 
 export interface AddItemToCart_checkoutLineItemsReplace_checkout_lineItems_edges_node_variant_priceV2 {
@@ -48,7 +48,7 @@ export interface AddItemToCart_checkoutLineItemsReplace_checkout_lineItems_edges
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface AddItemToCart_checkoutLineItemsReplace_checkout_lineItems_edges_node_variant {
@@ -116,7 +116,7 @@ export interface AddItemToCart_checkoutLineItemsReplace_checkout {
   /**
    * The url pointing to the checkout accessible from the web.
    */
-  webUrl: ShopifyURL;
+  webUrl: any;
   /**
    * The sum of all the taxes applied to the line items and shipping lines in the checkout.
    */

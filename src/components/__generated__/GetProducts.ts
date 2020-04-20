@@ -19,7 +19,7 @@ export interface GetProducts_products_edges_node_images_edges_node {
    * All transformation arguments are considered "best-effort". If they can be applied to an image, they will be.
    * Otherwise any transformations which an image type does not support will be ignored.
    */
-  transformedSrc: ShopifyURL;
+  transformedSrc: any;
 }
 
 export interface GetProducts_products_edges_node_images_edges {
@@ -43,7 +43,7 @@ export interface GetProducts_products_edges_node_priceRange_minVariantPrice {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface GetProducts_products_edges_node_priceRange_maxVariantPrice {
@@ -51,7 +51,7 @@ export interface GetProducts_products_edges_node_priceRange_maxVariantPrice {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface GetProducts_products_edges_node_priceRange {

@@ -30,7 +30,7 @@ export interface GetProductDetails_productByHandle_variants_edges_node_priceV2 {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
 }
 
 export interface GetProductDetails_productByHandle_variants_edges_node_selectedOptions {
@@ -86,7 +86,7 @@ export interface GetProductDetails_productByHandle_priceRange_minVariantPrice {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
   /**
    * Currency of the money.
    */
@@ -98,7 +98,7 @@ export interface GetProductDetails_productByHandle_priceRange_maxVariantPrice {
   /**
    * Decimal money amount.
    */
-  amount: ShopifyDecimal;
+  amount: any;
   /**
    * Currency of the money.
    */
@@ -126,7 +126,7 @@ export interface GetProductDetails_productByHandle {
   /**
    * The description of the product, complete with HTML formatting.
    */
-  descriptionHtml: ShopifyHTML;
+  descriptionHtml: any;
   /**
    * List of custom product options (maximum of 3 per product).
    */
