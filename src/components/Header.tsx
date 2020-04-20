@@ -1,9 +1,19 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { Flex, Image, IconButton, Box, Button, theme } from "@chakra-ui/core";
+import {
+  Flex,
+  Image,
+  IconButton,
+  Box,
+  Button,
+  theme,
+  Badge,
+} from "@chakra-ui/core";
 import { AiOutlineShoppingCart, AiOutlineInstagram } from "react-icons/ai";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
+import { useContext } from "react";
+import { CheckoutContext } from "../CheckoutContext";
 
 const iconCss = css`
   margin: auto;
@@ -11,7 +21,25 @@ const iconCss = css`
   width: 1.5rem;
 `;
 
+const CheckoutIcon: React.FC<{ quantity?: number }> = ({ quantity }) => (
+  <>
+    <AiOutlineShoppingCart css={iconCss} />
+    <Badge
+      backgroundColor="#fb175f"
+      color={theme.colors.white}
+      borderRadius={theme.radii.full}
+      position="absolute"
+      top={0}
+      right={0}
+      display={quantity ? "block" : "none"}
+    >
+      {quantity}
+    </Badge>
+  </>
+);
+
 const Header: React.FC<WithRouterProps> = ({ router }) => {
+  const { checkout } = useContext(CheckoutContext);
   return (
     <Flex
       px={4}
@@ -43,8 +71,10 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
           variant="unstyled"
           aria-label="cart"
           onClick={() => router.push("/cart")}
-          icon={() => <AiOutlineShoppingCart css={iconCss} />}
-        />
+          icon={() => (
+            <CheckoutIcon quantity={checkout?.lineItems.edges.length || 0} />
+          )}
+        ></IconButton>
       </Box>
     </Flex>
   );
