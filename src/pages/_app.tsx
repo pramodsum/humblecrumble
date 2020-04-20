@@ -30,6 +30,22 @@ class MyApp extends App<IProps> {
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
             <CSSReset />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Miniver&display=swap"
+              rel="stylesheet"
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"
+              rel="stylesheet"
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+              rel="stylesheet"
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Pacifico&family=Quicksand:wght@300;400;500;600;700&family=Satisfy&display=swap"
+              rel="stylesheet"
+            />
             <Layout>
               <Component {...pageProps} />
             </Layout>

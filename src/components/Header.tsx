@@ -1,7 +1,15 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import { useContext } from "react";
-import { Flex, Image, IconButton, Box, Button, Badge } from "@chakra-ui/core";
+import {
+  Flex,
+  Image,
+  IconButton,
+  Box,
+  Button,
+  Badge,
+  Heading,
+} from "@chakra-ui/core";
 import { AiOutlineShoppingCart, AiOutlineInstagram } from "react-icons/ai";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
@@ -55,7 +63,10 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
         variant="unstyled"
         height="auto"
       >
-        <Image width="150px" height="auto" src="/title.png" />
+        <Heading as="h1" fontSize={theme.fontSizes["4xl"]} letterSpacing={-1}>
+          humble crumble
+        </Heading>
+        {/* <Image width="150px" height="auto" src="/title.png" /> */}
       </Button>
       <Box>
         <IconButton

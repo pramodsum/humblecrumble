@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { Skeleton, Flex, Box, Button, Text } from "@chakra-ui/core";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/core";
+import { useContext, useState } from "react";
+import { Skeleton, Flex, Box, Button, Text, Heading } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
-import styled from "@emotion/styled";
 
 import {
   GetProductDetails,
@@ -18,31 +19,25 @@ import OrderForm from "./OrderForm";
 import { CheckoutContext } from "../CheckoutContext";
 import theme from "../utils/theme";
 
-const Title = styled.h1`
-  text-transform: capitalize;
-  overflow-wrap: break-word;
-  font-size: 2rem;
-`;
-
 const ProductSkeleton: React.FC = () => (
   <>
-    <Skeleton height="20px" width="720px" my={4} />
-    <Flex width="100%">
-      <Skeleton height="200px" width="300px" my={4} mr={3} />
+    <Skeleton height="20px" width={["327px", "720px"]} my={4} />
+    <Flex width="100%" display={["column", "row"]}>
+      <Skeleton height="200px" width="327px" my={4} mr={[0, 3]} mb={[3, 0]} />
       <Flex flexDirection="column" alignItems="flex-end">
         <Box>
-          <Skeleton height="20px" width="410px" my={4} />
-          <Skeleton height="20px" width="410px" my={4} />
+          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
+          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
         </Box>
         <Box>
-          <Skeleton height="20px" width="410px" my={4} />
-          <Skeleton height="20px" width="410px" my={4} />
+          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
+          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
         </Box>
         <Box>
-          <Skeleton height="20px" width="410px" my={4} />
-          <Skeleton height="20px" width="410px" my={4} />
+          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
+          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
         </Box>
-        <Skeleton height="40px" width="410px" my={4} />
+        <Skeleton height="40px" width={["327px", "410px"]} my={4} />
       </Flex>
     </Flex>
   </>
@@ -50,10 +45,10 @@ const ProductSkeleton: React.FC = () => (
 
 const Product: React.FC<WithRouterProps> = ({ router }) => {
   const handle = router.query.handle as string;
-  const [selectedVariant, setSelectedVariant] = React.useState<
+  const [selectedVariant, setSelectedVariant] = useState<
     GetProductDetails_productByHandle_variants_edges
   >();
-  const [cakeVariant, setCakeVariant] = React.useState<CakeVariant>();
+  const [cakeVariant, setCakeVariant] = useState<CakeVariant>();
   const { addItemToCart } = useContext(CheckoutContext);
 
   const { loading, data, error } = useQuery<
@@ -86,7 +81,15 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
       {loading && <ProductSkeleton />}
       {data?.productByHandle && (
         <Box>
-          <Title>{data.productByHandle.title}</Title>
+          <Heading
+            as="h1"
+            size="xl"
+            mb={3}
+            textTransform="lowercase"
+            overflowWrap="break-word"
+          >
+            {data.productByHandle.title}
+          </Heading>
           <Flex display={["column", "row"]}>
             <CakeImgBackground>
               {cakeVariant && (
@@ -107,6 +110,7 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
               )}
               {selectedVariant && (
                 <Button
+                  mb={4}
                   isFullWidth
                   variant="outline"
                   variantColor={theme.colors.black}
@@ -124,6 +128,14 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
             </Box>
           </Flex>
           <Text
+            borderTop="1px dashed gray"
+            pt={4}
+            css={css`
+              strong,
+              b {
+                font-size: ${theme.fontSizes.sm};
+              }
+            `}
             dangerouslySetInnerHTML={{
               __html: data.productByHandle.descriptionHtml,
             }}

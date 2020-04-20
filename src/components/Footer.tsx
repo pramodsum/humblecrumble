@@ -60,7 +60,7 @@ const Footer: React.FC = () => (
             <Text my={3}>
               Orders available for pickup only in San Francisco, CA
             </Text>
-            <Heading as="h5" size="sm">
+            <Heading as="h5" size="sm" textTransform="lowercase">
               Hours:
             </Heading>
             <Flex>

@@ -27,12 +27,13 @@ const MiniProductCard: React.FC<GetProducts_products_edges_node> = ({
             height="auto"
             width="100%"
             mb={4}
+            mr={2}
             src={imageNodes[0].node.transformedSrc}
           />
         ) : (
           <Skeleton height="200px" width="200px" mb={4} />
         )}
-        <Heading as="h3" size="sm">
+        <Heading as="h3" size="xl" textTransform="lowercase">
           {title}
         </Heading>
         <Text fontWeight="300" m={0}>

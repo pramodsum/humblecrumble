@@ -19,14 +19,16 @@ import {
   GetProductDetails_productByHandle,
 } from "./__generated__/GetProductDetails";
 
-const H3: React.FC<HeadingProps> = (props) => (
-  <Heading as="h3" size="md" {...props} />
+const OptionTitle: React.FC<HeadingProps> = (props) => (
+  <Heading
+    as="h3"
+    size="sm"
+    textTransform="lowercase"
+    overflowWrap="breakWord"
+    fontFamily="body"
+    {...props}
+  />
 );
-
-const OptionTitle = styled(H3)({
-  textTransform: "capitalize",
-  overflowWrap: "break-word",
-});
 
 const RadioButtonGrid = styled(RadioButtonGroup)`
   display: grid;
@@ -148,7 +150,7 @@ const OrderForm: React.FC<
             ${parseInt(selectedVariant.node.priceV2.amount).toFixed(2)}
           </OptionTitle>
         ) : (
-          <OptionTitle fontWeight="300" m={0}>
+          <OptionTitle fontWeight="300" fontFamily="body" m={0}>
             ${parseInt(priceRange.minVariantPrice.amount).toFixed(2)} - $
             {parseInt(priceRange.maxVariantPrice.amount).toFixed(2)}
           </OptionTitle>
@@ -161,7 +163,7 @@ const OrderForm: React.FC<
           value={size}
         >
           {sizes.values.map((value: string, index: number) => (
-            <RadioButton key={index} value={value}>
+            <RadioButton textTransform="lowercase" key={index} value={value}>
               {value}
             </RadioButton>
           ))}
@@ -181,7 +183,11 @@ const OrderForm: React.FC<
                 }: GetProductDetails_productByHandle_variants_edges_node_selectedOptions,
                 index: number
               ) => (
-                <RadioButton key={index} value={value}>
+                <RadioButton
+                  key={index}
+                  value={value}
+                  textTransform="lowercase"
+                >
                   {value}
                 </RadioButton>
               )
@@ -203,7 +209,11 @@ const OrderForm: React.FC<
                 }: GetProductDetails_productByHandle_variants_edges_node_selectedOptions,
                 index: number
               ) => (
-                <RadioButton key={index} value={value}>
+                <RadioButton
+                  textTransform="lowercase"
+                  key={index}
+                  value={value}
+                >
                   {value}
                 </RadioButton>
               )

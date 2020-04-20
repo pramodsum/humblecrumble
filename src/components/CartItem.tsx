@@ -30,30 +30,48 @@ const CartItem: React.FC<CheckoutFragment_lineItems_edges_node> = ({
   return (
     <Flex width="100%" justifyContent="space-between" py={2}>
       <Box>
-        <Heading as="h3" size="md">
+        <Heading as="h3" size="xl" textTransform="lowercase">
           {title}
         </Heading>
         <Flex>
-          <Heading as="h4" size="sm" mr={1}>
+          <Heading
+            as="h4"
+            size="sm"
+            mr={1}
+            textTransform="lowercase"
+            fontFamily="body"
+          >
             Size:
           </Heading>
           <Text>{variants[0]}</Text>
         </Flex>
         <Flex>
-          <Heading as="h4" size="sm" mr={1}>
+          <Heading
+            as="h4"
+            size="sm"
+            mr={1}
+            textTransform="lowercase"
+            fontFamily="body"
+          >
             Layers:
           </Heading>
           <Text>{variants[1]}</Text>
         </Flex>
         <Flex>
-          <Heading as="h4" size="sm" mr={1}>
+          <Heading
+            as="h4"
+            size="sm"
+            mr={1}
+            textTransform="lowercase"
+            fontFamily="body"
+          >
             Frosting:
           </Heading>
           <Text>{variants[2]}</Text>
         </Flex>
       </Box>
       <Flex flexDirection="column" alignItems="flex-end">
-        <Heading as="h3" size="md" mb={2}>
+        <Heading as="h3" size="xl" mb={2} textTransform="lowercase">
           ${parseInt(variant.priceV2.amount).toFixed(2)}
         </Heading>
         <Box>
