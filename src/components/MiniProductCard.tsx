@@ -31,11 +31,9 @@ const MiniProductCard: React.FC<GetProducts_products_edges_node> = ({
   <Box
     textAlign="center"
     boxSizing="unset"
-    border={`4px solid ${theme.colors.white}`}
     css={css`
       &:hover {
         color: ${theme.colors.hotPink};
-        border: 4px dotted ${theme.colors.black};
       }
     `}
   >
