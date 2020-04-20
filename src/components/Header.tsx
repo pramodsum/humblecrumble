@@ -52,7 +52,7 @@ const Header: React.FC<WithRouterProps> = ({ router }) => {
       px={4}
       mx="auto"
       position="static"
-      maxWidth={theme.breakpoints["md"]}
+      maxWidth={theme.breakpoints["lg"]}
       justifyContent="space-between"
       alignItems="center"
       height="90px"

@@ -1,7 +1,15 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import { useContext, useState } from "react";
-import { Skeleton, Flex, Box, Button, Text, Heading } from "@chakra-ui/core";
+import {
+  Skeleton as ChakraSkeleton,
+  Flex,
+  Box,
+  Button,
+  Text,
+  Heading,
+  SimpleGrid,
+} from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 import { withRouter } from "next/router";
@@ -19,28 +27,27 @@ import OrderForm from "./OrderForm";
 import { CheckoutContext } from "../CheckoutContext";
 import theme from "../utils/theme";
 
-const ProductSkeleton: React.FC = () => (
-  <>
-    <Skeleton height="20px" width={["327px", "720px"]} my={4} />
-    <Flex width="100%" display={["column", "row"]}>
-      <Skeleton height="200px" width="327px" my={4} mr={[0, 3]} mb={[3, 0]} />
-      <Flex flexDirection="column" alignItems="flex-end">
-        <Box>
-          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
-          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
-        </Box>
-        <Box>
-          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
-          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
-        </Box>
-        <Box>
-          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
-          <Skeleton height="20px" width={["327px", "410px"]} my={4} />
-        </Box>
-        <Skeleton height="40px" width={["327px", "410px"]} my={4} />
-      </Flex>
-    </Flex>
-  </>
+const SkeletonText = () => (
+  <SimpleGrid columns={1} spacing={4}>
+    <ChakraSkeleton height="20px" />
+    <ChakraSkeleton height="20px" />
+  </SimpleGrid>
+);
+
+const Skeleton: React.FC = () => (
+  <SimpleGrid columns={1} spacing={4}>
+    <ChakraSkeleton height="50px" />
+    <SimpleGrid columns={[1, 2]} spacing={5}>
+      <ChakraSkeleton height="200px" mr={[0, 3]} />
+      <SimpleGrid columns={1} spacing={5}>
+        <ChakraSkeleton height="30px" />
+        <SkeletonText />
+        <SkeletonText />
+        <SkeletonText />
+        <ChakraSkeleton height="60px" />
+      </SimpleGrid>
+    </SimpleGrid>
+  </SimpleGrid>
 );
 
 const Product: React.FC<WithRouterProps> = ({ router }) => {
@@ -77,8 +84,8 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
   };
 
   return (
-    <Box>
-      {loading && <ProductSkeleton />}
+    <Box mx="auto" width="100%">
+      {loading && <Skeleton />}
       {data?.productByHandle && (
         <Box>
           <Heading
@@ -90,7 +97,7 @@ const Product: React.FC<WithRouterProps> = ({ router }) => {
           >
             {data.productByHandle.title}
           </Heading>
-          <Flex display={["column", "row"]}>
+          <Flex flexDirection={["column", "row"]} mb={8}>
             <CakeImgBackground>
               {cakeVariant && (
                 <CakeImg

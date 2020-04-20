@@ -41,10 +41,12 @@ interface Fonts {
 interface ITheme extends ChakraTheme {
   colors: Colors;
   fonts: Fonts;
+  breakpoints: string[];
 }
 
 const theme: ITheme = {
   ...chakraTheme,
+  breakpoints: ["320px", "375px", "767px", "1023px"],
   colors: {
     ...chakraTheme.colors,
     hotPink: "#fb175f",

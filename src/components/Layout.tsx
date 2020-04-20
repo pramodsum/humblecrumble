@@ -12,7 +12,7 @@ const Layout: React.FC = ({ children }) => (
       <Header />
       <Flex
         width="100%"
-        maxWidth={theme.breakpoints["md"]}
+        maxWidth={theme.breakpoints["lg"]}
         mx="auto"
         px={6}
         flex={1}
