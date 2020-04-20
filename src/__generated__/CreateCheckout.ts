@@ -37,7 +37,7 @@ export interface CreateCheckout_checkoutCreate_checkout_lineItems_edges_node_var
   __typename: "Image";
   /**
    * The location of the original image as a URL.
-   *
+   * 
    * If there are any existing transformations in the original source URL, they will remain and not be stripped.
    */
   originalSrc: ShopifyURL;

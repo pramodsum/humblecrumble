@@ -1,6 +1,14 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { Box, Text, Link, Flex, IconButton } from "@chakra-ui/core";
+import {
+  Box,
+  Text,
+  Link,
+  Flex,
+  IconButton,
+  Heading,
+  SimpleGrid,
+} from "@chakra-ui/core";
 import {
   AiOutlineCopyright,
   AiOutlineInstagram,
@@ -27,33 +35,55 @@ const InlineCopyrightIcon = styled(AiOutlineCopyright)`
 const Footer: React.FC = () => (
   <Box mt={12} background={theme.colors.lemon[50]} width="100%" py={4}>
     <Box maxWidth={theme.breakpoints["md"]} mx="auto" px={6}>
-      <Flex my={4}>
-        <IconButton
-          variant="unstyled"
-          aria-label="instagram"
-          icon={() => <AiOutlineInstagram css={iconCss} />}
-        />
-        <IconButton
-          variant="unstyled"
-          aria-label="email"
-          icon={() => <AiOutlineMail css={iconCss} />}
-        />
+      <Flex flexDirection={["column-reverse", "row"]}>
+        <Box width="100%" maxWidth={["100%", "33%"]} mr={6}>
+          <Flex my={4}>
+            <IconButton
+              variant="unstyled"
+              aria-label="instagram"
+              icon={() => <AiOutlineInstagram css={iconCss} />}
+            />
+            <IconButton
+              variant="unstyled"
+              aria-label="email"
+              icon={() => <AiOutlineMail css={iconCss} />}
+            />
+          </Flex>
+          <Text mt={3}>
+            Copyright
+            <InlineCopyrightIcon />
+            Humble Crumble SF, {new Date().getFullYear()}
+          </Text>
+        </Box>
+        <Box>
+          <Box my={3}>
+            <Text my={3}>
+              Orders available for pickup only in San Francisco, CA
+            </Text>
+            <Heading as="h5" size="sm">
+              Hours:
+            </Heading>
+            <Flex>
+              <Text mr={2}>Mon - Fri: </Text>
+              <Text>10AM - 8PM</Text>
+            </Flex>
+            <Flex>
+              <Text mr={2}>Sat - Sun: </Text>
+              <Text>12PM - 6PM</Text>
+            </Flex>
+          </Box>
+          <Text>
+            For custom orders, please contact{" "}
+            <Link href="https://www.instagram.com/humblecrumblesf/">
+              @humblecrumblesf
+            </Link>{" "}
+            on instagram or email{" "}
+            <Link href="mailto: sumu@cookinginpjs.com">
+              hello@humblecrumblesf.com
+            </Link>
+          </Text>
+        </Box>
       </Flex>
-      <Text>
-        For custom orders, please contact{" "}
-        <Link href="https://www.instagram.com/humblecrumblesf/">
-          @humblecrumblesf
-        </Link>{" "}
-        on instagram or email{" "}
-        <Link href="mailto: sumu@cookinginpjs.com">
-          hello@humblegrumblesf.com
-        </Link>
-      </Text>
-      <Text mt={3}>
-        Copyright
-        <InlineCopyrightIcon />
-        Humble Crumble SF, {new Date().getFullYear()}
-      </Text>
     </Box>
   </Box>
 );

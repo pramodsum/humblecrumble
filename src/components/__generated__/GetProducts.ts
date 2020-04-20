@@ -7,6 +7,34 @@
 // GraphQL query operation: GetProducts
 // ====================================================
 
+export interface GetProducts_products_edges_node_priceRange_minVariantPrice {
+  __typename: "MoneyV2";
+  /**
+   * Decimal money amount.
+   */
+  amount: ShopifyDecimal;
+}
+
+export interface GetProducts_products_edges_node_priceRange_maxVariantPrice {
+  __typename: "MoneyV2";
+  /**
+   * Decimal money amount.
+   */
+  amount: ShopifyDecimal;
+}
+
+export interface GetProducts_products_edges_node_priceRange {
+  __typename: "ProductPriceRange";
+  /**
+   * The lowest variant's price.
+   */
+  minVariantPrice: GetProducts_products_edges_node_priceRange_minVariantPrice;
+  /**
+   * The highest variant's price.
+   */
+  maxVariantPrice: GetProducts_products_edges_node_priceRange_maxVariantPrice;
+}
+
 export interface GetProducts_products_edges_node {
   __typename: "Product";
   /**
@@ -22,6 +50,10 @@ export interface GetProducts_products_edges_node {
    * They are used by the Liquid templating language to refer to objects.
    */
   handle: string;
+  /**
+   * The price range.
+   */
+  priceRange: GetProducts_products_edges_node_priceRange;
 }
 
 export interface GetProducts_products_edges {

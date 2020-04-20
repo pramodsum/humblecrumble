@@ -1,25 +1,10 @@
 import React from "react";
-import Link from "next/link";
-import { ListItem, CircularProgress } from "@chakra-ui/core";
+import { Spinner, Flex, SimpleGrid } from "@chakra-ui/core";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
-import {
-  GetProducts,
-  GetProductsVariables,
-  GetProducts_products_edges_node,
-} from "./__generated__/GetProducts";
-
-const CakeLink: React.FC<GetProducts_products_edges_node> = ({
-  handle,
-  title,
-}) => (
-  <ListItem>
-    <Link href={`/cake/${handle}`}>
-      <a>{title}</a>
-    </Link>
-  </ListItem>
-);
+import { GetProducts, GetProductsVariables } from "./__generated__/GetProducts";
+import MiniProductCard from "./MiniProductCard";
 
 const Products: React.FC = () => {
   const { loading, data, error } = useQuery<GetProducts, GetProductsVariables>(
@@ -28,13 +13,23 @@ const Products: React.FC = () => {
 
   return (
     <>
-      {loading && <CircularProgress isIndeterminate />}
-      <ul>
+      {loading && (
+        <Flex width="100%" mt={12} justifyContent="center" alignItems="center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.50"
+            color="hotPink"
+            size="xl"
+          />
+        </Flex>
+      )}
+      <SimpleGrid width="100%" columns={3} spacing={3}>
         {data &&
           data.products.edges.map(({ node }) => (
-            <CakeLink key={node.id} {...node} />
+            <MiniProductCard key={node.id} {...node} />
           ))}
-      </ul>
+      </SimpleGrid>
       {error && <pre>{JSON.stringify(error)}</pre>}
     </>
   );
@@ -48,6 +43,14 @@ export const GET_PRODUCTS = gql`
           id
           title
           handle
+          priceRange {
+            minVariantPrice {
+              amount
+            }
+            maxVariantPrice {
+              amount
+            }
+          }
         }
       }
     }
