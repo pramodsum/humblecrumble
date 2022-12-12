@@ -15,7 +15,7 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "emotion-theming": "^10.0.27",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "graphql": "^14.6.0",
     "isomorphic-fetch": "^2.2.1",
     "next": "^9.3.5",
